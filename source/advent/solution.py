@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-DATA = Path(__file__).parent / "data"
+DATA = Path(__file__).parents[2] / "data"
 
 
 class AdventSolution(ABC):
