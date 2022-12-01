@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # Hide data files
-data/
+/data/*
+!/data/README.md
