@@ -1,17 +1,16 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data"
 
 
-class AdventSolution(ABC):
+class AdventSolution:
     __slots__ = ("__day__",)
 
-    def __init_subclass__(cls, *, day: int | None = None, **kwargs) -> None:
-        if day:
-            cls.__day__ = day
+    def __init_subclass__(cls, *, day: int | None = None, run: bool = True, **kwargs) -> None:
+        cls.__day__ = day
+        if run and day:
             cls.__initialize_solution()
         super().__init_subclass__(**kwargs)
 
@@ -41,14 +40,11 @@ class AdventSolution(ABC):
         with (DATA / file).open("r") as fp:
             return fp.read().strip()
 
-    @abstractmethod
     def __init__(self, data: str) -> None:
-        ...
+        pass
 
-    @abstractmethod
     def part_1(self):
-        ...
+        return NotImplemented
 
-    @abstractmethod
     def part_2(self):
-        ...
+        return NotImplemented
