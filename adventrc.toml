@@ -1,0 +1,14 @@
+[data]
+dirname               = 'data'           # name of the data directory
+destination           = './'             # destination to create data directory
+
+[data.year]
+dirname               = '{year}'         # year [int] -> year of the advent problem
+
+[data.day]
+filename              = 'day_{day}.txt'  # day [int] -> day of the advent problem
+
+[errors]
+on_missing_data_file  = 'fallback'       # [fallback -> fetch datafile through network, raise, skip]
+on_network_fail       = 'raise'          # [raise, skip]
+on_solution_fail      = 'skip'           # [raise, skip]
