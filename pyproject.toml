@@ -1,6 +1,19 @@
+[project]
+name = "advent-of-code"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "advent-tools>=1.0.0b1",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
 [tool.black]
 line-length = 125
 
 [tool.isort]
 profile = "black"
-line_length = 125

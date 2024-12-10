@@ -1,7 +1,7 @@
-from advent import AdventSolution
+from advent import Advent
 
 
-class Solution(AdventSolution, day=2):
+class Solution(Advent, day=2):
     PLAY = {"A": ["Z", "X", "Y"], "B": ["X", "Y", "Z"], "C": ["Y", "Z", "X"]}
 
     def __init__(self, data: str) -> None:

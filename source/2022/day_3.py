@@ -1,7 +1,7 @@
-from advent import AdventSolution
+from advent import Advent
 
 
-class Solution(AdventSolution, day=3):
+class Solution(Advent, day=3):
     def __init__(self, data: str) -> None:
         self.data = data.splitlines()
 
