@@ -13,7 +13,7 @@ venvPath = "."
 venv = ".venv"
 
 [tool.black]
-line-length = 160
+line-length = 250
 
 [tool.isort]
 profile = "black"
