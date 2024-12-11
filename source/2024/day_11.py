@@ -20,8 +20,8 @@ class Solution(Advent, year=2024, day=11):
                 if not d:
                     self.data[i + offset] = 1
                 elif ~(n := int(log10(d) + 1)) & 1:
-                    self.data[i + offset] = (l := int(d / 10 ** (n / 2)))
-                    self.data.insert(i + offset + 1, r := int(d % (10 ** (n / 2))))
+                    self.data[i + offset] = int(d / 10 ** (n / 2))
+                    self.data.insert(i + offset + 1, int(d % 10 ** (n / 2)))
                     offset += 1
                 else:
                     self.data[i + offset] *= 2024
