@@ -1,4 +1,3 @@
-from copy import copy
 from functools import cache
 from math import log10
 
@@ -9,19 +8,18 @@ class Solution(Advent, year=2024, day=11):
     def __init__(self, data: str) -> None:
         self.data = [int(n) for n in data.split()]
 
-    def part_1(self) -> int:
-        self._blink(25)
-        return len(self.data)
+    def part_1(self, blinks=25) -> int:
+        return sum(self._stonefind(s, blinks) for s in self.data)
 
-    def _blink(self, times):
-        for _ in range(times):
-            offset = 0
-            for i, d in enumerate(copy(self.data)):
-                if not d:
-                    self.data[i + offset] = 1
-                elif ~(n := int(log10(d) + 1)) & 1:
-                    self.data[i + offset] = int(d / 10 ** (n / 2))
-                    self.data.insert(i + offset + 1, int(d % 10 ** (n / 2)))
-                    offset += 1
-                else:
-                    self.data[i + offset] *= 2024
+    def part_2(self) -> int:
+        return self.part_1(blinks=75)
+
+    @cache
+    def _stonefind(self, stone, blinks):
+        if not blinks:
+            return 1
+        if not stone:
+            return self._stonefind(1, blinks - 1)
+        if ~(n := int(log10(stone) + 1)) & 1:
+            return self._stonefind(int(stone / 10 ** (n / 2)), blinks - 1) + self._stonefind(int(stone % 10 ** (n / 2)), blinks - 1)
+        return self._stonefind(stone * 2024, blinks - 1)
