@@ -131,3 +131,6 @@ dmypy.json
 # Hide data files
 /data/*
 !/data/README.md
+
+# Mac artifacts
+.DS_Store
